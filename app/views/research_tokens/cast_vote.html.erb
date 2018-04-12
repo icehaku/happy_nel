@@ -1,26 +1,30 @@
-<%= form_for(@research_token,  url: { action: "save_vote" }) do |f| %>
-  <% if @research_token.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@research_token.errors.count, "error") %> prohibited this research_token from being saved:</h2>
+<% if @research_token.grade.present? %>
+  Seu voto ja foi confirmado, favor aguardar a conclusão da pesquisa.
+<% else %>
+  <div>
+    <h3>How happy are you?</h3>
 
-      <ul>
-      <% @research_token.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+    <%= form_for(@research_token,  url: { action: "save_vote" }) do |f| %>
+      <%= f.hidden_field :token %>
 
-  <%= f.hidden_field :token %>
+      <div id="star-rating">
+          <input type="radio" name="research_token_grade" class="rating" value="1" />
+          <input type="radio" name="research_token_grade" class="rating" value="2" />
+          <input type="radio" name="research_token_grade" class="rating" value="3" />
+          <input type="radio" name="research_token_grade" class="rating" value="4" />
+          <input type="radio" name="research_token_grade" class="rating" value="5" />
+          <input type="radio" name="research_token_grade" class="rating" value="6" />
+          <input type="radio" name="research_token_grade" class="rating" value="7" />
+          <input type="radio" name="research_token_grade" class="rating" value="8" />
+          <input type="radio" name="research_token_grade" class="rating" value="9" />
+          <input type="radio" name="research_token_grade" class="rating" value="10"/>
+      </div>
 
-  <div class="field">
-    <%= f.label :grade %>
-    <%= f.text_field :grade %>
-  </div>
+      <br>
 
-  <div class="actions">
-    <%= f.submit "Vote" %>
+      <div class="actions">
+        <%= f.submit "Vote", data: { confirm: 'Confirma sua escolha?' } %>
+      </div>
+    <% end %>
   </div>
 <% end %>
-
-<%= cast_vote_research_token_path(@research_token.token) %>

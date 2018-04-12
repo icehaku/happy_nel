@@ -4,13 +4,18 @@ class ResearchesController < ApplicationController
   def show; end
 
   def release_research
-    return unless no_pending_research?
-    produce_research
-    redirect_to root_path, notice: 'Research Started'
+    if exist_pending_research?
+      redirect_to root_path, notice: 'There is Already a Open Research'
+    elsif User.count < 2
+      redirect_to root_path, notice: 'You need at least 2 users registered.'
+    else
+      produce_research
+      redirect_to root_path, notice: 'Research Started'
+    end
   end
 
   def force_research_conclusion
-    @research.update_attributes(concluded: true)
+    @research.finish
     redirect_to root_path, notice: 'Research Force Concluded.'
   end
 
@@ -20,9 +25,12 @@ class ResearchesController < ApplicationController
     @research = Research.find(params[:id])
   end
 
-  def no_pending_research?
+  def exist_pending_research?
     research = Research.last
-    if research.present? == false or research.concluded == false
+
+    if Research.count == 0
+      false
+    elsif research.present? and research.concluded == true
       false
     else
       true
@@ -30,22 +38,16 @@ class ResearchesController < ApplicationController
   end
 
   def produce_research
-    actual_users_count = User.count
+    ActiveRecord::Base.transaction do
+      new_research = Research.new
+      new_research.save
 
-    if actual_users_count > 0
-      ActiveRecord::Base.transaction do
-        new_research = Research.new
-        new_research.save
-
-        for i in 1..actual_users_count
-          new_research_token = ResearchToken.new(research: new_research)
-          new_research_token.save
-        end
-
-        send_research_link_emails(new_research)
+      for i in 1..User.count
+        new_research_token = ResearchToken.new(research: new_research)
+        new_research_token.save
       end
-    else
-      raise "sem usuarios"
+
+      send_research_link_emails(new_research)
     end
   end
 
