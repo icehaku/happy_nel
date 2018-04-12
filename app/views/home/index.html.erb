@@ -1,2 +1,15 @@
 <h1 align="center">Happy Nel</h1>
-<%= link_to "Cadastrar Usuario", new_usuario_path %>
+
+<p id="notice"><%= notice %></p>
+
+<%= link_to "Create User", users_path %> <br>
+<%= no_pending_research? %> <br>
+
+
+<h3> Concluded Researches: </h3>
+<% @researches.reverse.each do |research| %>
+  <span> <%= research.created_at %>, <%= research.concluded %> </span>
+  <% unless research.concluded %>
+    <%= link_to "Force Research Conclusion", force_conclusion_research_path(research) %>
+  <% end %> <br>
+<% end %>

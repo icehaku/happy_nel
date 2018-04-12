@@ -1,0 +1,26 @@
+<%= form_for(@research_token,  url: { action: "save_vote" }) do |f| %>
+  <% if @research_token.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@research_token.errors.count, "error") %> prohibited this research_token from being saved:</h2>
+
+      <ul>
+      <% @research_token.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= f.hidden_field :token %>
+
+  <div class="field">
+    <%= f.label :grade %>
+    <%= f.text_field :grade %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Vote" %>
+  </div>
+<% end %>
+
+<%= cast_vote_research_token_path(@research_token.token) %>
