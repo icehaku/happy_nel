@@ -1,7 +1,5 @@
 class HomeController < ApplicationController
-
   def index
-    #raise "home-index"
+    @researches = Research.all
   end
-
 end
