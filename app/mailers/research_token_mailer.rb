@@ -6,4 +6,10 @@ class ResearchTokenMailer < ApplicationMailer
     @url = url
     mail(to: @user.email, subject: 'Happy Nel Quality Research')
   end
+
+  def research_concluded_email(user, grade)
+    @user = user
+    @grade = grade
+    mail(to: @user.email, subject: 'Happy Nel Quality Research Concluded')
+  end
 end
