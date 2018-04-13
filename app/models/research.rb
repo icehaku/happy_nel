@@ -4,7 +4,7 @@ class Research < ApplicationRecord
   def get_result
     grade_total = self.research_token.sum(:grade)
     return 0 unless grade_total > 0
-    grade_total / self.research_token.count
+    grade_total / self.research_token.where.not(grade: nil).count
   end
 
   def get_votes
