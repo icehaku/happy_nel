@@ -14,8 +14,9 @@ A project for a RoR Dev Position;
 Details(pt-br):
 https://gist.github.com/rodrigomaia/3534b58be07864aeffd6d51a265d13e7
 
-## CI - Code Maintability
+## CI - Code Maintainability
 https://travis-ci.org/icehaku/happy_nel
+
 https://codeclimate.com/github/icehaku/happy_nel
 
 ## Run the Project
