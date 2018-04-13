@@ -1,11 +1,51 @@
-<%= link_to "Create User", users_path %> <br>
-<%= no_pending_research? %> <br>
+<div class="box_head head-color" align="center">
+  <div>
+    <h2>Is Our Team Happy?</h2>
+  </div>
+</div>
 
+<div class="base_box container-fluid">
+  <div class="base_box_content">
+    <%= no_pending_research? %>
 
-<h3> Researches: </h3>
-<% @researches.reverse.each do |research| %>
-  <span> <%= research.created_at %>, <%= research.concluded %> </span>
-  <% unless research.concluded %>
-    <%= link_to "Force Research Conclusion", force_conclusion_research_path(research) %>
-  <% end %> <br>
-<% end %>
+    <h3 class="box_list"> Researches: </h3>
+
+    <br>
+
+    <div class="box_list">
+      <table class="research_table">
+        <thead>
+          <tr>
+            <th>Started</th>
+            <th>Votes</th>
+            <th>Media</th>
+            <th>Concluded</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @researches.each do |research| %>
+            <tr>
+              <td><%= research.created_at.strftime('%d/%m/%y - %H:%M') %></td>
+              <td><%= research.get_votes %></</td>
+              <td><%= research.get_result %></td>
+              <td><%= research.concluded ? "Yes" : "No" %></td>
+              <td>
+                <% unless research.concluded %>
+                  <%= link_to force_conclusion_research_path(research),
+                    class: "btn btn-danger btn-xs", data: { confirm: 'Are you sure?' },
+                      title: 'Force Research Conclusion', 'data-toggle' => 'tooltip' do %>
+                    <span class="glyphicon glyphicon-fire" aria-hidden="true"></span>
+                  <% end %>
+                <% end %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+
+      </table>
+    </div>
+
+  </div>
+</div>

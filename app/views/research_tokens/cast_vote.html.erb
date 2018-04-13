@@ -1,30 +1,46 @@
-<% if @research_token.grade.present? %>
-  Seu voto ja foi confirmado, favor aguardar a conclusão da pesquisa.
-<% else %>
+<div class="box_head head-color" align="center">
   <div>
-    <h3>How happy are you?</h3>
-
-    <%= form_for(@research_token,  url: { action: "save_vote" }) do |f| %>
-      <%= f.hidden_field :token %>
-
-      <div id="star-rating">
-          <input type="radio" name="research_token_grade" class="rating" value="1" />
-          <input type="radio" name="research_token_grade" class="rating" value="2" />
-          <input type="radio" name="research_token_grade" class="rating" value="3" />
-          <input type="radio" name="research_token_grade" class="rating" value="4" />
-          <input type="radio" name="research_token_grade" class="rating" value="5" />
-          <input type="radio" name="research_token_grade" class="rating" value="6" />
-          <input type="radio" name="research_token_grade" class="rating" value="7" />
-          <input type="radio" name="research_token_grade" class="rating" value="8" />
-          <input type="radio" name="research_token_grade" class="rating" value="9" />
-          <input type="radio" name="research_token_grade" class="rating" value="10"/>
-      </div>
-
-      <br>
-
-      <div class="actions">
-        <%= f.submit "Vote", data: { confirm: 'Confirma sua escolha?' } %>
-      </div>
-    <% end %>
+    <h2>How are you feeling?</h2>
   </div>
-<% end %>
+</div>
+
+<div class="base_box container-fluid">
+  <div class="base_box_content">
+    <div class="box_list">
+
+      <% if @research_token.grade.present? %>
+        Seu voto ja foi confirmado, favor aguardar a conclusão da pesquisa.
+      <% else %>
+        <div>
+          <h3>Fear nothing, the vote is totally secret!</h3>
+
+          <%= form_for(@research_token,  url: { action: "save_vote" }) do |f| %>
+            <%= f.hidden_field :token %>
+
+            <div id="star-rating">
+                <input type="radio" name="research_token_grade" class="rating" value="1" />
+                <input type="radio" name="research_token_grade" class="rating" value="2" />
+                <input type="radio" name="research_token_grade" class="rating" value="3" />
+                <input type="radio" name="research_token_grade" class="rating" value="4" />
+                <input type="radio" name="research_token_grade" class="rating" value="5" />
+                <input type="radio" name="research_token_grade" class="rating" value="6" />
+                <input type="radio" name="research_token_grade" class="rating" value="7" />
+                <input type="radio" name="research_token_grade" class="rating" value="8" />
+                <input type="radio" name="research_token_grade" class="rating" value="9" />
+                <input type="radio" name="research_token_grade" class="rating" value="10"/>
+            </div>
+
+            <br>
+
+            <div class="actions">
+              <%= button_tag type: 'submit', class: "btn btn-success btn-s" do %>
+                <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"> Save </span>
+              <% end %>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+
+    </div>
+  </div>
+</div>

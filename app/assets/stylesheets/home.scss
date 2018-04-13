@@ -1,3 +1,81 @@
 // Place all the styles related to the Home controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.home-head-title {
+    color: #faf1e0;
+    font-family: "Merriweather Sans", sans-serif;
+    font-weight: 800;
+    font-size: 3em;
+}
+
+.base_box {
+  background-color: #fff;
+  width: 600px;
+  height: 100%;
+  margin: 0 auto;
+}
+
+.base_box_content {
+  padding-left: 10px;
+  padding-top: 10px;
+}
+
+.box_list {
+  color: #a9896d;
+  font-family: 'Lato', Arial, sans-serif;
+}
+
+.box_head {
+  color: #f9f6e5;
+  width: 600px;
+  height: 70px;
+  margin: 0 auto;
+  font-weight: 700;
+  font-size: 1.5em;
+  line-height: 1px;
+  padding-top: 10px;
+  font-family: 'Lato', Arial, sans-serif;
+}
+
+.head-color {
+  background-color: #f7941e;
+}
+
+.box_content {
+  padding-left: 25px;
+  padding-top: 10px;
+}
+
+.custom_big_button {
+  padding: 10px;
+  width: 550px;
+  height: 60px;
+  font-size: 22px;
+  color: white;
+  text-align: center;
+  border: 0;
+  cursor: pointer;
+  &:active {
+    top: 1px;
+    outline: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+  }
+}
+
+.release_research {
+  background: #a9896d;
+}
+
+.manage_user {
+  background: #f4442e;
+}
+
+.research_table {
+  width: 100%;  
+}
+
+.bot_group_btn {
+  padding-bottom: 10px;
+}
