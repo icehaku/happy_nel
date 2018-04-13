@@ -1,8 +1,6 @@
 class ResearchesController < ApplicationController
   before_action :set_research, only: [:show, :force_research_conclusion]
 
-  def show; end
-
   def release_research
     if exist_pending_research?
       flash[:alert] = 'There is Already a Open Research.'
