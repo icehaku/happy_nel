@@ -5,18 +5,26 @@ class ResearchesController < ApplicationController
 
   def release_research
     if exist_pending_research?
-      redirect_to root_path, notice: 'There is Already a Open Research'
+      flash[:alert] = 'There is Already a Open Research.'
+      redirect_to root_path
     elsif User.count < 2
-      redirect_to root_path, notice: 'You need at least 2 users registered.'
+      flash[:alert] = 'You need at least 2 users registered.'
+      redirect_to root_path
     else
       produce_research
-      redirect_to root_path, notice: 'Research Started'
+      flash[:success] = 'Research Started.'
+      redirect_to root_path
     end
   end
 
   def force_research_conclusion
+    User.all.each do |user|
+      ResearchTokenMailer.research_concluded_email(user, @research.get_result).deliver_now
+    end
+
     @research.finish
-    redirect_to root_path, notice: 'Research Force Concluded.'
+    flash[:warning] = 'Research Force Concluded.'
+    redirect_to root_path
   end
 
   private

@@ -1,7 +1,6 @@
 class ResearchTokensController < ApplicationController
   before_action :set_research_token, only: [:cast_vote]
 
-
   def cast_vote; end
 
   def save_vote

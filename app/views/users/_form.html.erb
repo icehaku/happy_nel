@@ -1,4 +1,4 @@
-<%= form_for(@user) do |f| %>
+<%= form_for @user do |f| %>
   <% if @user.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
@@ -22,6 +22,8 @@
   </div>
 
   <div class="actions">
-    <%= f.submit %>
+    <%= button_tag type: 'submit', class: "btn btn-success btn-s" do %>
+      <span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"> Save </span>
+    <% end %>
   </div>
 <% end %>

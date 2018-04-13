@@ -3,11 +3,11 @@ module HomeHelper
     research = Research.last
 
     if research.present? and research.concluded == false
-      content_tag(:span, 'Research Running, finish the last one, before open another.')
+      render partial: "research_running"
     elsif Research.count == 0
-      link_to "Release Research", release_research_path
+      render partial: "menu_researches"
     else
-      link_to "Release Research", release_research_path
+      render partial: "menu_researches"
     end
   end
 end
