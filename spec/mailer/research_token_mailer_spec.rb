@@ -9,7 +9,7 @@ RSpec.describe ResearchTokenMailer, :type => :mailer do
     it "renders the headers" do
       expect(mail.subject).to eq("Happy Nel Quality Research")
       expect(mail.to).to eq([user.email])
-      expect(mail.from).to eq(["aisse@mail.com"])
+      expect(mail.from).to eq(["elano.garcez.dev@gmail.com"])
     end
 
     it "renders the body" do
@@ -25,7 +25,7 @@ RSpec.describe ResearchTokenMailer, :type => :mailer do
     it "renders the headers" do
       expect(mail.subject).to eq("Happy Nel Quality Research Concluded")
       expect(mail.to).to eq([user.email])
-      expect(mail.from).to eq(["aisse@mail.com"])
+      expect(mail.from).to eq(["elano.garcez.dev@gmail.com"])
     end
 
     it "renders the body" do

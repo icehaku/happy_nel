@@ -1,5 +1,5 @@
 class ResearchTokenMailer < ApplicationMailer
-  default from: 'aisse@mail.com'
+  default from: 'elano.garcez.dev@gmail.com'
 
   def research_email(user, url)
     @user = user

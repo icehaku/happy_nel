@@ -18,12 +18,12 @@ Rails.application.configure do
   config.action_mailer.perform_caching = false
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-    :address              => "smtp.mail.com",
+    :address              => "smtp.gmail.com",
     :port                 => 587,
-    :user_name            => 'aisse@mail.com',
-    :password             => 'aissepwdtemp',
+    :user_name            => 'elano.garcez.dev@gmail.com',
+    :password             => 'anypwd123',
     :authentication       => 'plain',
-    :enable_starttls_auto => true  }
+    :enable_starttls_auto => true }
 
 
   if ENV["RAILS_LOG_TO_STDOUT"].present?
