@@ -3,10 +3,10 @@ class ResearchesController < ApplicationController
 
   def release_research
     if exist_pending_research?
-      flash[:alert] = 'There is Already a Open Research.'
+      flash[:danger] = 'There is Already a Open Research.'
       redirect_to root_path
     elsif User.count < 2
-      flash[:alert] = 'You need at least 2 users registered.'
+      flash[:danger] = 'You need at least 2 users registered.'
       redirect_to root_path
     else
       produce_research
