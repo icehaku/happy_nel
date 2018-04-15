@@ -17,7 +17,8 @@ class ResearchesController < ApplicationController
 
   def force_research_conclusion
     User.all.each do |user|
-      ResearchTokenMailer.research_concluded_email(user, @research.get_result).deliver_now
+      ResearchTokenMailer.research_concluded_email(
+        user, @research.get_result).deliver_now
     end
 
     @research.finish
@@ -61,7 +62,7 @@ class ResearchesController < ApplicationController
     research_tokens = ResearchToken.where(research: research).pluck(:token).to_ary
     User.all.each do |user|
       token = research_tokens.delete(research_tokens.sample)
-      url = request.base_url+cast_vote_research_token_path(token)
+      url   = "#{request.base_url}#{cast_vote_research_token_path(token)}"
       ResearchTokenMailer.research_email(user, url).deliver_now
     end
   end

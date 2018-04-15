@@ -4,9 +4,7 @@ class ResearchTokensController < ApplicationController
   def cast_vote; end
 
   def save_vote
-    grade = 0
-    grade = params[:research_token_grade] if params[:research_token_grade].present?
-
+    grade = params[:research_token_grade].present? ? params[:research_token_grade] : 0
     token = ResearchToken.find_by_token(params[:research_token][:token])
     token.update_attributes(grade: grade)
 

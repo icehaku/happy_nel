@@ -18,22 +18,16 @@
             <%= f.hidden_field :token %>
 
             <div id="star-rating">
-                <input type="radio" name="research_token_grade" class="rating" value="1" />
-                <input type="radio" name="research_token_grade" class="rating" value="2" />
-                <input type="radio" name="research_token_grade" class="rating" value="3" />
-                <input type="radio" name="research_token_grade" class="rating" value="4" />
-                <input type="radio" name="research_token_grade" class="rating" value="5" />
-                <input type="radio" name="research_token_grade" class="rating" value="6" />
-                <input type="radio" name="research_token_grade" class="rating" value="7" />
-                <input type="radio" name="research_token_grade" class="rating" value="8" />
-                <input type="radio" name="research_token_grade" class="rating" value="9" />
-                <input type="radio" name="research_token_grade" class="rating" value="10"/>
+              <% for i in 1..10 %>
+                <input type="radio" name="research_token_grade"
+                  class="rating" value="<%= i %>" />
+              <% end %>
             </div>
 
             <br>
 
             <div class="actions">
-              <%= button_tag type: 'submit', class: "btn btn-success btn-s" do %>
+              <%= button_tag type: "submit", class: "btn btn-success btn-s" do %>
                 <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"> Save </span>
               <% end %>
             </div>

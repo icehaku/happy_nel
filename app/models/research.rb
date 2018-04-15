@@ -10,7 +10,7 @@ class Research < ApplicationRecord
   def get_votes
     pending_votes = self.research_token.where.not(grade: nil).count.to_s
     total_votes = self.research_token.count.to_s
-    pending_votes+"/"+total_votes
+    "#{pending_votes}/#{total_votes}"
   end
 
   def finish
